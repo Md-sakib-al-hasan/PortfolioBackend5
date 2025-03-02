@@ -21,16 +21,7 @@ app.get('/', (req: Request, res: Response) => {
   res.send('SuccessFully run server');
 });
 
-//autoupdate useStatus
-cron.schedule('0 0 * * *', async () => {
-  try {
-    await UserServices.checkAndUpdateUserStatus(); // This should now work
 
-    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-  } catch (err) {
-    throw new AppError(status.CONFLICT, 'Error in cron job');
-  }
-});
 
 //Not Found
 app.use(notFound);
