@@ -9,7 +9,9 @@ const superUser = {
 
 const seedSuperAdmin = async () => {
   //when database is connected, we will check is there any user who is super admin
-  const isSuperAdminExits = await User.findOne({ email:config.super_admin_email });
+  const isSuperAdminExits = await User.findOne({
+    email: config.super_admin_email,
+  });
 
   if (!isSuperAdminExits) {
     await User.create(superUser);

@@ -4,10 +4,6 @@ import express, { Application, Request, Response } from 'express';
 import globalErrorHandler from './app/middlewares/globalErrorhandler';
 import notFound from './app/middlewares/notFound';
 import router from './app/routes';
-import cron from 'node-cron';
-import { UserServices } from './app/modules/User/user.service';
-import AppError from './app/errors/AppError';
-import status from 'http-status';
 import config from './app/config';
 
 const app: Application = express();
@@ -20,8 +16,6 @@ app.use('/api/v1', router);
 app.get('/', (req: Request, res: Response) => {
   res.send('SuccessFully run server');
 });
-
-
 
 //Not Found
 app.use(notFound);

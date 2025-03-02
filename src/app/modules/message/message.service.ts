@@ -1,41 +1,27 @@
 /* eslint-disable no-unused-vars */
+import MessageModule from './message.model';
+import { TUser } from './message.interface';
+import QueryBuilder from '../../builder/QueryBuilder';
 
-import status from "http-status";
-import AppError from "../../errors/AppError";
-import MessageModule from "./message.model";
-import { TUser } from "./message.interface";
+const createmessage = async (payload: TUser) => {
+  const newproject = await MessageModule.create(payload);
 
-
-
-
-const createmessage = async (payload:TUser) => {
-
-    const newproject = await MessageModule.create(payload);
-
-    return newproject;
- 
+  return newproject;
 };
 
+const getAllMessageDB = async (query: Record<string, unknown>) => {
+  const userQeuery = new QueryBuilder(MessageModule.find(), query)
+    .search(['description', 'email', 'name'])
+    .filter()
+    .sort()
+    .paginate();
 
-
-
-// const getAllporjectDB = async (query: Record<string, unknown>) => {
-//   const userQeuery = new QueryBuilder(User.find(), query)
-//     .search(['name', 'price', 'company', 'size'])
-//     .filter()
-//     .sort()
-//     .paginate();
-
-//   const result = await userQeuery.modelQuery;
-//   const meta = await userQeuery.countTotal();
-//   return { result, meta };
-// };
-
-
-
-
+  const result = await userQeuery.modelQuery;
+  const meta = await userQeuery.countTotal();
+  return { result, meta };
+};
 
 export const MessageServices = {
-   
-  createmessage 
+  createmessage,
+  getAllMessageDB,
 };

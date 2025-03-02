@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Model, Types } from 'mongoose';
+import { Model } from 'mongoose';
 export interface Tuser {
   name: string;
   email: string;
@@ -13,5 +13,3 @@ export interface UserModel extends Model<Tuser> {
     hashedPassword: string,
   ): Promise<boolean>;
 }
-
-

@@ -27,16 +27,6 @@ const createUserDB = (payload) => __awaiter(void 0, void 0, void 0, function* ()
     const user = yield user_model_1.User.create(payload);
     return user;
 });
-const updateUserDB = (payload, user) => __awaiter(void 0, void 0, void 0, function* () {
-    const existsUser = yield user_model_1.User.isUserExistsByEmail(user.useremail);
-    if (!existsUser) {
-        throw new AppError_1.default(http_status_codes_1.StatusCodes.UNAUTHORIZED, 'You are not update this');
-    }
-    const updatedUser = yield user_model_1.User.findOneAndUpdate({ email: existsUser.email }, payload, {
-        new: true,
-    });
-    return updatedUser;
-});
 const getAlluserDB = (query) => __awaiter(void 0, void 0, void 0, function* () {
     const userQeuery = new QueryBuilder_1.default(user_model_1.User.find(), query)
         .search(['name', 'price', 'company', 'size'])
@@ -47,19 +37,6 @@ const getAlluserDB = (query) => __awaiter(void 0, void 0, void 0, function* () {
     const meta = yield userQeuery.countTotal();
     return { result, meta };
 });
-const checkAndUpdateUserStatus = () => __awaiter(void 0, void 0, void 0, function* () {
-    const twoDaysAgo = new Date();
-    twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
-    const inactiveUsers = yield user_model_1.User.find({
-        lastLogin: { $lte: twoDaysAgo },
-        status: 'active',
-        isDeleted: false,
-    });
-    if (inactiveUsers.length > 0) {
-        yield user_model_1.User.updateMany({ _id: { $in: inactiveUsers.map((user) => user._id) } }, { $set: { status: 'inactive' } });
-    }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-});
 const singleUserBD = (email) => __awaiter(void 0, void 0, void 0, function* () {
     const reuslt = yield user_model_1.User.findOne({ email });
     if (!reuslt) {
@@ -69,8 +46,6 @@ const singleUserBD = (email) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.UserServices = {
     createUserDB,
-    updateUserDB,
     getAlluserDB,
     singleUserBD,
-    checkAndUpdateUserStatus,
 };

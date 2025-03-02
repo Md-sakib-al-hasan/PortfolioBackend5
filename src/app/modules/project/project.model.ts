@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document, model } from 'mongoose';
+import { Schema, model } from 'mongoose';
 import { TProject } from './project.interface';
 
 // Schema for allarrayobject type
@@ -59,19 +59,18 @@ const ProjectSchema: Schema = new Schema<TProject>(
       required: true,
     },
     featured: {
-      type: [AllArrayObjectSchema], 
+      type: [AllArrayObjectSchema],
       required: true,
     },
-    isDelete:{
-        type: Boolean,
-         default:false
-      },
+    isDelete: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
-  }
+  },
 );
-
 
 const Project = model<TProject>('Project', ProjectSchema);
 

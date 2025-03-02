@@ -1,12 +1,10 @@
-import httpStatus, { status } from 'http-status';
+import httpStatus from 'http-status';
 import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import { MessageServices } from './message.service';
 
-
-
 const createvmessage = catchAsync(async (req, res) => {
-  const result =  await MessageServices.createmessage(req.body)
+  const result = await MessageServices.createmessage(req.body);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -16,7 +14,7 @@ const createvmessage = catchAsync(async (req, res) => {
 });
 
 const getAllmessage = catchAsync(async (req, res) => {
-  const result = ""
+  const result = await MessageServices.getAllMessageDB(req.query);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -26,10 +24,7 @@ const getAllmessage = catchAsync(async (req, res) => {
   });
 });
 
-
-
 export const MessageControllers = {
-  createvmessage ,
+  createvmessage,
   getAllmessage,
-  
 };

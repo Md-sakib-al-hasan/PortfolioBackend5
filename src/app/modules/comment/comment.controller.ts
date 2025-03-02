@@ -1,12 +1,10 @@
-import httpStatus, { status } from 'http-status';
+import httpStatus from 'http-status';
 import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import { CommentServices } from './comment.service';
 
-
-
 const createvcomment = catchAsync(async (req, res) => {
-  const result =  await CommentServices.createcomment(req.body)
+  const result = await CommentServices.createcomment(req.body);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -16,7 +14,7 @@ const createvcomment = catchAsync(async (req, res) => {
 });
 
 const getAllcomment = catchAsync(async (req, res) => {
-  const result = ""
+  const result = await CommentServices.getAllporjectDB(req.query);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -26,10 +24,7 @@ const getAllcomment = catchAsync(async (req, res) => {
   });
 });
 
-
-
 export const CommentControllers = {
-  
   createvcomment,
   getAllcomment,
 };

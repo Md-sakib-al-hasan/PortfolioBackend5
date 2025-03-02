@@ -16,7 +16,6 @@ const createUserDB = async (payload: Tuser) => {
   return user;
 };
 
-
 const getAlluserDB = async (query: Record<string, unknown>) => {
   const userQeuery = new QueryBuilder(User.find(), query)
     .search(['name', 'price', 'company', 'size'])
@@ -28,8 +27,6 @@ const getAlluserDB = async (query: Record<string, unknown>) => {
   const meta = await userQeuery.countTotal();
   return { result, meta };
 };
-
-
 
 const singleUserBD = async (email: string) => {
   const reuslt = await User.findOne({ email });

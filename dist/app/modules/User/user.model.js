@@ -14,7 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 const mongoose_1 = require("mongoose");
-const user_constant_1 = require("./user.constant");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const config_1 = __importDefault(require("../../config"));
 const userSchema = new mongoose_1.Schema({
@@ -31,39 +30,6 @@ const userSchema = new mongoose_1.Schema({
         type: String,
         required: true,
         select: 0,
-    },
-    phone: {
-        type: String,
-    },
-    address: {
-        type: String,
-    },
-    passwordChangedAt: {
-        type: Date,
-    },
-    gender: {
-        type: String,
-        enum: user_constant_1.Gender,
-    },
-    role: {
-        type: String,
-        enum: user_constant_1.UserRole,
-        default: 'customer',
-    },
-    order: [{ type: mongoose_1.Schema.Types.ObjectId, ref: 'Order' }],
-    whitelist: [{ type: mongoose_1.Schema.Types.ObjectId, ref: 'Product' }],
-    lastLogin: {
-        type: Date,
-        default: Date.now,
-    },
-    status: {
-        type: String,
-        enum: user_constant_1.UserStatus,
-        default: 'active',
-    },
-    isDeleted: {
-        type: Boolean,
-        default: false,
     },
 }, {
     timestamps: true,
@@ -89,9 +55,5 @@ userSchema.statics.isPasswordMatched = function (plainTextPassword, hashedPasswo
     return __awaiter(this, void 0, void 0, function* () {
         return yield bcrypt_1.default.compare(plainTextPassword, hashedPassword);
     });
-};
-userSchema.statics.isJWTIssuedBeforePasswordChanged = function (passwordChangedTimestamp, jwtIssuedTimestamp) {
-    const passwordChangedTime = new Date(passwordChangedTimestamp).getTime() / 1000;
-    return passwordChangedTime > jwtIssuedTimestamp;
 };
 exports.User = (0, mongoose_1.model)('User', userSchema);

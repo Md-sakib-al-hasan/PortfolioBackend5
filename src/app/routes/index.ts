@@ -19,7 +19,7 @@ const moduleRoutes = [
   },
   {
     path: '/projects',
-    route:projectRoutes,
+    route: projectRoutes,
   },
   {
     path: '/blog',
@@ -31,7 +31,7 @@ const moduleRoutes = [
   },
   {
     path: '/comment',
-    route:  CommentRoutes,
+    route: CommentRoutes,
   },
 ];
 

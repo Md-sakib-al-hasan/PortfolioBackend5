@@ -26,24 +26,6 @@ const createCustomer = (0, catchAsync_1.default)((req, res) => __awaiter(void 0,
         data: result,
     });
 }));
-const updateUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield user_service_1.UserServices.updateUserDB(req.body, req.user);
-    (0, sendResponse_1.default)(res, {
-        statusCode: http_status_1.default.OK,
-        success: true,
-        message: 'user  is update succesfully',
-        data: result,
-    });
-}));
-const getAlluser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield user_service_1.UserServices.getAlluserDB(req.query);
-    (0, sendResponse_1.default)(res, {
-        statusCode: http_status_1.default.OK,
-        success: true,
-        message: 'Succesfully get all user',
-        data: result,
-    });
-}));
 const getsingleuser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield user_service_1.UserServices.singleUserBD(req.body.email);
     (0, sendResponse_1.default)(res, {
@@ -55,7 +37,5 @@ const getsingleuser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
 }));
 exports.UserControllers = {
     createCustomer,
-    updateUser,
     getsingleuser,
-    getAlluser,
 };

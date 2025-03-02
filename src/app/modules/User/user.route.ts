@@ -11,7 +11,6 @@ router.post(
   UserControllers.createCustomer,
 );
 
-
 router.post(
   '/singleUser',
   validateRequest(UserValiditons.SingleUserSchema),

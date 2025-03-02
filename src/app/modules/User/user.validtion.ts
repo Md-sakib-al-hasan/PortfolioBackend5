@@ -8,8 +8,6 @@ export const createuserSchema = z.object({
   }),
 });
 
-
-
 export const SingleUserSchema = z.object({
   body: z.object({
     email: z.string().email('Must be Enter Eamil'),

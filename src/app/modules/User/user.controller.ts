@@ -5,7 +5,7 @@ import { UserServices } from './user.service';
 
 const createCustomer = catchAsync(async (req, res) => {
   const result = await UserServices.createUserDB(req.body);
- 
+
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -13,7 +13,6 @@ const createCustomer = catchAsync(async (req, res) => {
     data: result,
   });
 });
-
 
 const getsingleuser = catchAsync(async (req, res) => {
   const result = await UserServices.singleUserBD(req.body.email);

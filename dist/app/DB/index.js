@@ -13,20 +13,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const config_1 = __importDefault(require("../config"));
-const user_constant_1 = require("../modules/User/user.constant");
 const user_model_1 = require("../modules/User/user.model");
 const superUser = {
     name: config_1.default.super_admin_name,
     email: config_1.default.super_admin_email,
     password: config_1.default.super_admin_password,
-    needsPasswordChange: false,
-    role: user_constant_1.USER_ROLE.superAdmin,
-    status: 'active',
-    isDeleted: false,
 };
 const seedSuperAdmin = () => __awaiter(void 0, void 0, void 0, function* () {
     //when database is connected, we will check is there any user who is super admin
-    const isSuperAdminExits = yield user_model_1.User.findOne({ role: user_constant_1.USER_ROLE.superAdmin });
+    const isSuperAdminExits = yield user_model_1.User.findOne({
+        email: config_1.default.super_admin_email,
+    });
     if (!isSuperAdminExits) {
         yield user_model_1.User.create(superUser);
     }

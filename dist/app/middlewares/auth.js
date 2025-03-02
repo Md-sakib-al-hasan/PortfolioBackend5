@@ -18,7 +18,7 @@ const config_1 = __importDefault(require("../config"));
 const AppError_1 = __importDefault(require("../errors/AppError"));
 const user_model_1 = require("../modules/User/user.model");
 const catchAsync_1 = __importDefault(require("../utils/catchAsync"));
-const auth = (...requiredRoles) => {
+const auth = () => {
     return (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
         const token = req.headers.authorization;
         // checking if the token is missing
@@ -34,22 +34,11 @@ const auth = (...requiredRoles) => {
         catch (err) {
             throw new AppError_1.default(http_status_1.default.UNAUTHORIZED, 'Invalid token!');
         }
-        const { role, useremail, iat } = decoded;
+        const { useremail } = decoded;
         // checking if the user exists
         const user = yield user_model_1.User.isUserExistsByEmail(useremail);
         if (!user) {
             throw new AppError_1.default(http_status_1.default.NOT_FOUND, 'This user is not found!');
-        }
-        // checking if the user is already deleted
-        if (user.isDeleted) {
-            throw new AppError_1.default(http_status_1.default.FORBIDDEN, 'This user is deleted!');
-        }
-        if (user.passwordChangedAt &&
-            user_model_1.User.isJWTIssuedBeforePasswordChanged(user.passwordChangedAt, iat)) {
-            throw new AppError_1.default(http_status_1.default.UNAUTHORIZED, 'You are not authorized!');
-        }
-        if (requiredRoles.length && !requiredRoles.includes(role)) {
-            throw new AppError_1.default(http_status_1.default.UNAUTHORIZED, 'You are not authorized!');
         }
         req.user = decoded;
         next();
