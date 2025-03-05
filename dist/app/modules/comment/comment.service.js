@@ -22,7 +22,7 @@ const createcomment = (payload) => __awaiter(void 0, void 0, void 0, function* (
 });
 const getAllporjectDB = (query) => __awaiter(void 0, void 0, void 0, function* () {
     const userQeuery = new QueryBuilder_1.default(comment_model_1.default.find(), query)
-        .search(['comment'])
+        .search(['comment', 'blogid'])
         .filter()
         .sort()
         .paginate();

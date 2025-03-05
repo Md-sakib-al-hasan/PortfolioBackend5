@@ -21,7 +21,7 @@ const Updateupdaeudoes = catchAsync(async (req, res) => {
   }
 
   const result = await BlogServices.updatevideo(req.body, id);
-  console.log(result);
+
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,

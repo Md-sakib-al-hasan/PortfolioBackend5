@@ -66,7 +66,6 @@ const Updateupdaeudoes = (0, catchAsync_1.default)((req, res) => __awaiter(void 
         throw new AppError_1.default(http_status_1.status.NOT_IMPLEMENTED, 'Ener the  court id');
     }
     const result = yield blog_service_1.BlogServices.updatevideo(req.body, id);
-    console.log(result);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,

@@ -35,6 +35,7 @@ const loginUser = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     const accessToken = (0, auth_utils_1.createToken)(jwtPayload, config_1.default.jwt_access_secret, config_1.default.jwt_access_expires_in);
     return {
         accessToken,
+        user,
     };
 });
 exports.AuthServices = {

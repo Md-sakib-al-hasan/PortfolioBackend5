@@ -12,7 +12,7 @@ const createcomment = async (payload: TComment) => {
 
 const getAllporjectDB = async (query: Record<string, unknown>) => {
   const userQeuery = new QueryBuilder(CommentModule.find(), query)
-    .search(['comment',"blogid"])
+    .search(['comment', 'blogid'])
     .filter()
     .sort()
     .paginate();
