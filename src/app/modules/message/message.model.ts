@@ -4,7 +4,7 @@ import { TUser } from './message.interface';
 const MessageSchema: Schema = new Schema<TUser>(
   {
     name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
+    email: { type: String, required: true },
     description: { type: String, required: true },
   },
   {

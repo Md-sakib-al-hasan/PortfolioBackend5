@@ -5,6 +5,7 @@ This portfolio project consists of a Frontend and Backend system to showcase per
 ---
 
 ## Live Links
+
 - **Frontend (Live)**: [Portfolio Frontend](https://portfoliofontend5.vercel.app/)
 - **Backend (Live)**: [Portfolio Backend](https://portfolio-backend5.vercel.app/)
 
@@ -32,15 +33,13 @@ This portfolio project consists of a Frontend and Backend system to showcase per
 - **Contact Form Submission**: Store messages in MongoDB or any database.
 - **Security**: Input validation.
 
-
-
 ---
 
 ## Technologies
 
--  TypeScript
--  Express js
--  Zod
+- TypeScript
+- Express js
+- Zod
 - Mongoose
 
 ---
@@ -68,7 +67,7 @@ This portfolio project consists of a Frontend and Backend system to showcase per
 3. Create a `.env` file in the root directory with the following environment variables:
 
    ```plaintext
-    NODE_ENV=development 
+    NODE_ENV=development
     PORT=5000
     DATABASE_URL
     BCRYPT_SALT_ROUNDS =10
@@ -79,7 +78,7 @@ This portfolio project consists of a Frontend and Backend system to showcase per
     DOMAIN_FONTEND=http://localhost:3000
     DOMAIN_SERVER=http://localhost:5000
 
-
+   ```
 
 4. Start the server:
    ```bash
@@ -89,12 +88,13 @@ This portfolio project consists of a Frontend and Backend system to showcase per
 ---
 
 ## Contributing
+
 1. Fork the repository
 2. Create a new branch (`feature/new-feature`)
 3. Commit your changes
 4. Push to the branch
 5. Open a pull request
 
-
 ## Contact
+
 For any questions or support, reach out at [mdsakibalhasanprogrammer1@gmail.com](mailto:mdsakibalhasanprogrammer1@gmail.com).
