@@ -5,6 +5,7 @@ import { projectRoutes } from '../modules/project/project.route';
 import { BlogRoutes } from '../modules/Blog/blog.route';
 import { MessageRoutes } from '../modules/message/message.route';
 import { CommentRoutes } from '../modules/comment/comment.route';
+import { DocumentRoutes } from '../modules/Document/document.route';
 
 const router = Router();
 
@@ -32,6 +33,10 @@ const moduleRoutes = [
   {
     path: '/comment',
     route: CommentRoutes,
+  },
+  {
+    path: '/text',
+    route: DocumentRoutes,
   },
 ];
 
