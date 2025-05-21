@@ -14,7 +14,7 @@ const createDocuments = catchAsync(async (req, res) => {
   });
 });
 const UpdateDcoment = catchAsync(async (req, res) => {
-  const { id } = req.params;
+  const { id } = req.query;
 
   if (typeof id !== 'string') {
     throw new AppError(status.NOT_IMPLEMENTED, 'Ener the  court id');
@@ -41,7 +41,7 @@ const getAllDocument = catchAsync(async (req, res) => {
 });
 
 const getsingleDocument = catchAsync(async (req, res) => {
-  const { id } = req.params;
+  const { id } = req.query;
 
   if (typeof id !== 'string') {
     throw new AppError(status.NOT_IMPLEMENTED, 'Ener the  court id');
@@ -56,17 +56,17 @@ const getsingleDocument = catchAsync(async (req, res) => {
 });
 
 const DeletesingelDocument = catchAsync(async (req, res) => {
-  const { id } = req.params;
+  const { id } = req.query;
 
   if (typeof id !== 'string') {
     throw new AppError(status.NOT_IMPLEMENTED, 'Ener the  court id');
   }
-  const result = await DocumentServices.singleDocumentBD(id);
+  const result = await DocumentServices.singledeleteDocumentsBD(id);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'video is delete succesfully',
+    message: 'blog is delete succesfully',
     data: result,
   });
 });

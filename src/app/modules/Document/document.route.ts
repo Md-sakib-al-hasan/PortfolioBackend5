@@ -11,13 +11,13 @@ router.post(
   DocumentControllers.createDocuments,
 );
 router.patch(
-  '/update-blog/:id',
+  '/update-blog/',
 
   validateRequest(DocumentValidations.BlogUpdateSchema),
   DocumentControllers.UpdateDcoment,
 );
-router.delete('/delete-blog/:id', DocumentControllers.DeletesingelDocument);
-router.get('/getsingle-blog/:id', DocumentControllers.getsingleDocument);
+router.delete('/delete-blog/', DocumentControllers.DeletesingelDocument);
+router.get('/getsingle-blog/', DocumentControllers.getsingleDocument);
 router.get('/get-all-blog', DocumentControllers.getAllDocument);
 
 export const DocumentRoutes = router;

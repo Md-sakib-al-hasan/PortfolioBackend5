@@ -61,7 +61,7 @@ const createDocuments = (0, catchAsync_1.default)((req, res) => __awaiter(void 0
     });
 }));
 const UpdateDcoment = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id } = req.params;
+    const { id } = req.query;
     if (typeof id !== 'string') {
         throw new AppError_1.default(http_status_1.status.NOT_IMPLEMENTED, 'Ener the  court id');
     }
@@ -83,7 +83,7 @@ const getAllDocument = (0, catchAsync_1.default)((req, res) => __awaiter(void 0,
     });
 }));
 const getsingleDocument = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id } = req.params;
+    const { id } = req.query;
     if (typeof id !== 'string') {
         throw new AppError_1.default(http_status_1.status.NOT_IMPLEMENTED, 'Ener the  court id');
     }
@@ -96,15 +96,15 @@ const getsingleDocument = (0, catchAsync_1.default)((req, res) => __awaiter(void
     });
 }));
 const DeletesingelDocument = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id } = req.params;
+    const { id } = req.query;
     if (typeof id !== 'string') {
         throw new AppError_1.default(http_status_1.status.NOT_IMPLEMENTED, 'Ener the  court id');
     }
-    const result = yield document_service_1.DocumentServices.singleDocumentBD(id);
+    const result = yield document_service_1.DocumentServices.singledeleteDocumentsBD(id);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: 'video is delete succesfully',
+        message: 'blog is delete succesfully',
         data: result,
     });
 }));
