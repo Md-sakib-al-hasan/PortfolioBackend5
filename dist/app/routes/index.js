@@ -8,6 +8,8 @@ const blog_route_1 = require("../modules/Blog/blog.route");
 const message_route_1 = require("../modules/message/message.route");
 const comment_route_1 = require("../modules/comment/comment.route");
 const document_route_1 = require("../modules/Document/document.route");
+const course_route_1 = require("../modules/course/course.route");
+const education_route_1 = require("../modules/Education/education.route");
 const router = (0, express_1.Router)();
 const moduleRoutes = [
     {
@@ -37,6 +39,14 @@ const moduleRoutes = [
     {
         path: '/text',
         route: document_route_1.DocumentRoutes,
+    },
+    {
+        path: '/course',
+        route: course_route_1.CourseRoutes,
+    },
+    {
+        path: '/education',
+        route: education_route_1.EducationRoutes,
     },
 ];
 moduleRoutes.forEach((route) => router.use(route.path, route.route));

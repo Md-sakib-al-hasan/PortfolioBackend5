@@ -6,6 +6,8 @@ import { BlogRoutes } from '../modules/Blog/blog.route';
 import { MessageRoutes } from '../modules/message/message.route';
 import { CommentRoutes } from '../modules/comment/comment.route';
 import { DocumentRoutes } from '../modules/Document/document.route';
+import { CourseRoutes } from '../modules/course/course.route';
+import { EducationRoutes } from '../modules/Education/education.route';
 
 const router = Router();
 
@@ -37,6 +39,14 @@ const moduleRoutes = [
   {
     path: '/text',
     route: DocumentRoutes,
+  },
+  {
+    path: '/course',
+    route: CourseRoutes,
+  },
+  {
+    path: '/education',
+    route: EducationRoutes,
   },
 ];
 
