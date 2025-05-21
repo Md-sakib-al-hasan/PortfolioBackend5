@@ -4,7 +4,7 @@ const BlogSchema = z.object({
   body: z.object({
     title: z.string().min(1, { message: 'Title is required' }),
     excerpt: z.string().min(1, { message: 'Excerpt is required' }),
-    date: z.string().min(1, { message: 'Date is required' }), // You might want a more specific date validation
+    date: z.string().min(1, { message: 'Date is required' }),
     readTime: z.string().min(1, { message: 'Read time is required' }),
     category: z.string().min(1, { message: 'Category is required' }),
     author: z.object({
@@ -14,8 +14,9 @@ const BlogSchema = z.object({
     content: z.string().min(1, { message: 'Content is required' }),
     tags: z
       .array(z.string())
-      .min(1, { message: 'At least one tag is required' }),
-    isPublished: z.boolean().default(false),
+      .min(1, { message: 'At least one tag is required' })
+      .optional(),
+    isPublished: z.boolean().default(false).optional(),
   }),
 });
 

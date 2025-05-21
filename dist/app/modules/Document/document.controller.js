@@ -51,28 +51,28 @@ const catchAsync_1 = __importDefault(require("../../utils/catchAsync"));
 const sendResponse_1 = __importDefault(require("../../utils/sendResponse"));
 const document_service_1 = require("./document.service");
 const AppError_1 = __importDefault(require("../../errors/AppError"));
-// const createvidoes = catchAsync(async (req, res) => {
-//   const result = await DocumentServices.createVideoDB(req.body);
-//   sendResponse(res, {
-//     statusCode: httpStatus.OK,
-//     success: true,
-//     message: 'project is created succesfully',
-//     data: result,
-//   });
-// });
-// const Updateupdaeudoes = catchAsync(async (req, res) => {
-//   const { id } = req.query;
-//   if (typeof id !== 'string') {
-//     throw new AppError(status.NOT_IMPLEMENTED, 'Ener the  court id');
-//   }
-//   const result = await DocumentServices.updatevideo(req.body, id);
-//   sendResponse(res, {
-//     statusCode: httpStatus.OK,
-//     success: true,
-//     message: 'video is updated succesfully',
-//     data: result,
-//   });
-// });
+const createDocuments = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield document_service_1.DocumentServices.createDocumentDB(req.body);
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'project is created succesfully',
+        data: result,
+    });
+}));
+const UpdateDcoment = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    if (typeof id !== 'string') {
+        throw new AppError_1.default(http_status_1.status.NOT_IMPLEMENTED, 'Ener the  court id');
+    }
+    const result = yield document_service_1.DocumentServices.updateDocument(req.body, id);
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'video is updated succesfully',
+        data: result,
+    });
+}));
 const getAllDocument = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield document_service_1.DocumentServices.getAllDocumentDB(req.query);
     (0, sendResponse_1.default)(res, {
@@ -95,20 +95,23 @@ const getsingleDocument = (0, catchAsync_1.default)((req, res) => __awaiter(void
         data: result,
     });
 }));
-// const Deletesingelvidoe = catchAsync(async (req, res) => {
-//   const { id } = req.query;
-//   if (typeof id !== 'string') {
-//     throw new AppError(status.NOT_IMPLEMENTED, 'Ener the  court id');
-//   }
-//   const result = await DocumentServices.singledeleteBlogBD(id);
-//   sendResponse(res, {
-//     statusCode: httpStatus.OK,
-//     success: true,
-//     message: 'video is delete succesfully',
-//     data: result,
-//   });
-// });
+const DeletesingelDocument = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    if (typeof id !== 'string') {
+        throw new AppError_1.default(http_status_1.status.NOT_IMPLEMENTED, 'Ener the  court id');
+    }
+    const result = yield document_service_1.DocumentServices.singleDocumentBD(id);
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'video is delete succesfully',
+        data: result,
+    });
+}));
 exports.DocumentControllers = {
     getAllDocument,
     getsingleDocument,
+    DeletesingelDocument,
+    createDocuments,
+    UpdateDcoment,
 };

@@ -6,7 +6,7 @@ const BlogSchema = zod_1.z.object({
     body: zod_1.z.object({
         title: zod_1.z.string().min(1, { message: 'Title is required' }),
         excerpt: zod_1.z.string().min(1, { message: 'Excerpt is required' }),
-        date: zod_1.z.string().min(1, { message: 'Date is required' }), // You might want a more specific date validation
+        date: zod_1.z.string().min(1, { message: 'Date is required' }),
         readTime: zod_1.z.string().min(1, { message: 'Read time is required' }),
         category: zod_1.z.string().min(1, { message: 'Category is required' }),
         author: zod_1.z.object({
@@ -16,8 +16,9 @@ const BlogSchema = zod_1.z.object({
         content: zod_1.z.string().min(1, { message: 'Content is required' }),
         tags: zod_1.z
             .array(zod_1.z.string())
-            .min(1, { message: 'At least one tag is required' }),
-        isPublished: zod_1.z.boolean().default(false),
+            .min(1, { message: 'At least one tag is required' })
+            .optional(),
+        isPublished: zod_1.z.boolean().default(false).optional(),
     }),
 });
 const BlogUpdateSchema = zod_1.z.object({

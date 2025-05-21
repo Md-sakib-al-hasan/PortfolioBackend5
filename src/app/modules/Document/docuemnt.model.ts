@@ -6,6 +6,7 @@ const BlogSchema: Schema = new Schema<TDocument>(
     title: {
       type: String,
       required: true,
+      unique: true,
     },
     excerpt: {
       type: String,

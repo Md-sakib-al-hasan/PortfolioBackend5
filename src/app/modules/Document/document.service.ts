@@ -4,28 +4,29 @@ import status from 'http-status';
 import AppError from '../../errors/AppError';
 import DocumentModule from './docuemnt.model';
 import QueryBuilder from '../../builder/QueryBuilder';
+import { TDocument } from './document.interface';
 
-// const createVideoDB = async (payload: TBlog) => {
-//   const newproject = await BlogModule.create(payload);
+const createDocumentDB = async (payload: TDocument) => {
+  const newproject = await DocumentModule.create(payload);
 
-//   return newproject;
-// };
+  return newproject;
+};
 
-// const updatevideo = async (payload: Partial<TBlog>, id: string) => {
-//   const project = await BlogModule.findByIdAndUpdate(id, payload, {
-//     new: true,
-//   });
+const updateDocument = async (payload: Partial<TDocument>, id: string) => {
+  const project = await DocumentModule.findByIdAndUpdate(id, payload, {
+    new: true,
+  });
 
-//   if (!project) {
-//     throw new AppError(status.NOT_FOUND, 'This blog not found');
-//   }
+  if (!project) {
+    throw new AppError(status.NOT_FOUND, 'This blog not found');
+  }
 
-//   return project;
-// };
+  return project;
+};
 
 const getAllDocumentDB = async (query: Record<string, unknown>) => {
   const userQeuery = new QueryBuilder(DocumentModule.find(), query)
-    .search([])
+    .search(['title', 'excerpt', 'category'])
     .filter()
     .sort()
     .paginate();
@@ -43,19 +44,18 @@ const singleDocumentBD = async (id: string) => {
   return reuslt;
 };
 
-// const singledeleteBlogBD = async (id: string) => {
-//   const reuslt = await DocumentModule.findByIdAndUpdate(
-//     id,
-//     { isDelete: true },
-//     { new: true },
-//   );
-//   if (!reuslt) {
-//     throw new AppError(status.NOT_FOUND, 'This blog Not found');
-//   }
-//   return reuslt;
-// };
+const singledeleteDocumentsBD = async (id: string) => {
+  const reuslt = await DocumentModule.findByIdAndDelete(id);
+  if (!reuslt) {
+    throw new AppError(status.NOT_FOUND, 'This blog Not found');
+  }
+  return reuslt;
+};
 
 export const DocumentServices = {
+  createDocumentDB,
   getAllDocumentDB,
   singleDocumentBD,
+  singledeleteDocumentsBD,
+  updateDocument,
 };
